@@ -2,12 +2,14 @@
 
 require_relative 'product'
 require_relative 'delivery_charge_calculator'
+require_relative 'offer'
 
-# Represents a shopping basket along with handling product additions.
+# Represents a shopping basket, handling product additions and total calculations.
 class Basket
-  def initialize(catalogue:, delivery_rules:)
+  def initialize(catalogue:, delivery_rules:, offers: [])
     @catalogue = catalogue
     @delivery_calculator = DeliveryChargeCalculator.new(delivery_rules)
+    @offers = offers
     @items = []
   end
 
@@ -18,9 +20,12 @@ class Basket
 
   def total
     subtotal = @items.sum(&:price)
+    discount = @offers.sum { |offer| offer.apply(@items) }
 
-    delivery_cost = @delivery_calculator.calculate(subtotal)
+    final_subtotal = subtotal - discount
 
-    subtotal + delivery_cost
+    delivery_cost = @delivery_calculator.calculate(final_subtotal)
+
+    final_subtotal + delivery_cost
   end
 end

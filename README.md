@@ -19,10 +19,13 @@ The solution is built with a focus on **separation of concerns** and **extensibi
 This design makes the system flexible, maintainable, and easy to test.
 
 ## How to Run
-To run the main program and see the example baskets:
+
 ```bash
+# --- Run main program and see the example baskets ---
 ruby run.rb
 
-To run the unit tests:
+#######################################
+
+# --- Run Tests ---
 ruby -I. test/basket_test.rb
 

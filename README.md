@@ -24,6 +24,5 @@ To run the main program and see the example baskets:
 ruby run.rb
 
 To run the unit tests:
-```bash
 ruby -I. test/basket_test.rb
 

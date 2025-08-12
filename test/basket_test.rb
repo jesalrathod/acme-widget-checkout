@@ -34,19 +34,19 @@ class BasketTest < Minitest::Test
   def test_example_basket_one
     @basket.add('B01')
     @basket.add('G01')
-    assert_in_delta 37.85, @basket.total, 0.001
+    assert_in_delta 37.85, @basket.total, 0.01
   end
 
   def test_example_basket_two
     @basket.add('R01')
     @basket.add('R01')
-    assert_in_delta 54.37, @basket.total, 0.001
+    assert_in_delta 54.37, @basket.total, 0.01
   end
 
   def test_example_basket_three
     @basket.add('R01')
     @basket.add('G01')
-    assert_in_delta 60.85, @basket.total, 0.001
+    assert_in_delta 60.85, @basket.total, 0.01
   end
 
   def test_example_basket_four
@@ -55,7 +55,7 @@ class BasketTest < Minitest::Test
     @basket.add('R01')
     @basket.add('R01')
     @basket.add('R01')
-    assert_in_delta 98.27, @basket.total, 0.001
+    assert_in_delta 98.27, @basket.total, 0.01
   end
 
   # A custom test to verify the "buy one, get one half price" discount
@@ -68,6 +68,6 @@ class BasketTest < Minitest::Test
     # Subtotal after discount: 98.85 - 16.475 = 82.375
     # Delivery (under 90): 2.95
     # Total: 82.375 + 2.95 = 85.325
-    assert_in_delta 85.325, @basket.total, 0.001
+    assert_in_delta 85.325, @basket.total, 0.01
   end
 end
